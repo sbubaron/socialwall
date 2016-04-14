@@ -9,9 +9,9 @@ $(function() {
 	    search: '#sbudoit', //leave this blank if you want to show user's tweet
 	    user: '', //username
 	    numTweets: 21, //number of tweets
-	    appendTo: '.cycle-slideshow',
+	    appendTo: '.wall',
 	    useGridalicious: false,
-	    template: '<div class="media item well"><div class="avatar pull-left media-object">{AVATAR}</div><div class="content"><span class="name">{USER_NAME}</span>   <span class="username">{USER_HANDLE}</span>   <span class="time pull-right">{AGO}</span><div class="body">{TEXT}<br /> {IMG}</div></div></div>',
+	    template: '<div class="media item well"><div class="avatar pull-left media-object">{AVATAR}</div><div class="content"><span class="name">{USER_NAME}</span>   <span class="username">@{USER_HANDLE}</span>   <span class="time pull-right">{AGO}</span><div class="body">{IMG}{TEXT}</div></div></div>',
 
 	    // core function of jqtweet
 	    // https://dev.twitter.com/docs/using-search
@@ -34,7 +34,7 @@ $(function() {
             }
 	        }
 
-          console.log(request);
+  //        console.log(request);
 
 	        $.ajax({
 	            url: '/oauth/grabtweets.php',
@@ -42,10 +42,10 @@ $(function() {
 	            dataType: 'json',
 	            data: request,
 	            success: function(data, textStatus, xhr) {
-                console.log("success");
+
 		            if (data.httpstatus == 200) {
 		            	if (JQTWEET.search) data = data.statuses;
-                  console.log(JQTWEET);
+
 	                var text, name, img;
 
 	                try {
@@ -60,7 +60,7 @@ $(function() {
                     //  console.log("in loop");
 	                    img = '';
 	                    url = 'http://twitter.com/' + data[i].user.screen_name + '/status/' + data[i].id_str;
-                      avatar = '<img src="/images/avatar.png" />';
+                      avatar = '<img src="' + data[i].user.profile_image_url_https + '" />';
 
                       if(data[i].retweeted_status){
 
@@ -71,7 +71,7 @@ $(function() {
 
             	                    try {
             	                      if (data[i].entities['media']) {
-            	                        img = '<img src="' + data[i].entities['media'][0].media_url + '" />';
+            	                        img = '<img class="pull-right" src="' + data[i].entities['media'][0].media_url + '" />';
             	                      }
             	                    } catch (e) {
             	                      //no media
@@ -85,10 +85,20 @@ $(function() {
             	                        .replace('{AGO}', JQTWEET.timeAgo(data[i].created_at) )
 
 
-                                  console.log($tweetCard);
+                              //    console.log($tweetCard);
             	                    $(JQTWEET.appendTo).append( $tweetCard );
                       }
 	                  }
+
+                    $('.wall').cycle({
+                       speed: 600,
+                       slides: '> div',
+                       timeout: 4000,
+                       startingSlide: 1,
+                       slideCss:         {  },
+                       manualSpeed: 100
+                     });
+                   console.log("cycling");
 
                   } catch (e) {
 	                  //item is less than item count
@@ -107,12 +117,7 @@ $(function() {
 
 	               } else alert('no data returned');
 
-                 $('.cycle-slideshow').cycle({
-                    speed: 600,
-                    slides: '.item',
-                    manualSpeed: 100
-                  });
-                console.log("cycling");
+
 	            }
 
 	        });

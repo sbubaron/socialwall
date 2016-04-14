@@ -1,0 +1,120 @@
+html, body, #container{
+  height: 100%;
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+}
+
+*
+{
+  box-sizing: border-box;
+}
+
+body
+{
+  background-image: url('/images/spring.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+
+
+}
+
+#container{
+
+  background-color:rgba(0, 0, 0, 0.7);
+
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+h1.site-name
+{
+  margin-top: 23px;
+}
+
+.item
+{
+  background-color: #fff;
+  font-size: 2em;
+  color: #000;
+  width: 100%;
+  max-width: 1200px;
+  font-family: 'ITCFranklinGothicW01-Md 812695',Helvetica,Helvetica Neue,Arial,sans-serif;
+
+  padding: 25px;
+}
+
+
+
+.content
+{
+  display: inline-block;
+
+  vertical-align: top;
+}
+
+.name, .username, .time {
+ font-size: 0.8em;
+}
+
+
+.header{
+  width: 100%;
+  position: absolute;
+    background-color:rgba(255, 255, 255, 0.8);
+  left:0;
+  top:0;
+  padding: 10px;
+}
+
+.hashtag {
+  margin-right: 100px;
+}
+
+#container
+{
+  display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.wall
+{
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+}
+
+.item
+{
+  max-height: 700px;
+  display: none;
+
+}
+
+.item.cycle-slide-active
+{
+  display: block;
+}
+
+.item .content .body img
+{
+  max-width:100%;
+  max-height:300px;
+
+  border: 2px solid #000;
+}
+
+.item .body
+{
+  font-size: 3em;
+  line-height: 1.3em;
+}
+
+.avatar
+{
+      margin-top: 9px;
+}
