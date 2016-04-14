@@ -1,0 +1,148 @@
+<html>
+<head>
+<title>SBU Twitter</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+<script src="/js/cycle.js"></script>
+
+<link type="text/css" rel="stylesheet" href="https://fast.fonts.net/cssapi/8b09d344-baa0-42a8-bbac-175ff46c86d5.css" media="all">
+<link type="text/css" rel="stylesheet" href="https://unity.it.stonybrook.edu/.dist/css/style.css" media="all">
+
+
+<style>
+
+html, body, #container{
+  height: 100%;
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+}
+
+*
+{
+  box-sizing: border-box;
+}
+
+body
+{
+  background-image: url('/images/spring.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+#container{
+
+  background-color:rgba(0, 0, 0, 0.7);
+
+  width: 100%;
+  height: 100%;
+}
+
+
+.item
+{
+  background-color: #fff;
+  font-size: 2em;
+  color: #000;
+  width: 960px;
+  max-width: 960px;
+  font-family: 'ITCFranklinGothicW01-Md 812695',Helvetica,Helvetica Neue,Arial,sans-serif;
+
+  padding: 25px;
+}
+
+
+
+.content
+{
+  display: inline-block;
+  width: 800px;
+
+  vertical-align: top;
+}
+
+.name, .username, .time {
+ font-size: 0.8em;
+}
+
+
+.header{
+  width: 100%;
+  position: absolute;
+    background-color:rgba(255, 255, 255, 0.8);
+  left:0;
+  top:0;
+  padding: 25px;
+}
+
+.hashtag {
+  margin-right: 100px;
+}
+
+#container
+{
+  display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+<div id="container">
+  <div class="header">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <h1>Stony Brook University | TLT Colloquium 2016 <span class="pull-right hashtag">#sbutlt</span></h1>
+    </div>
+  </div>
+  </div>
+
+  <div class="cycle-slideshow" data-cycle-slides=".item">
+
+
+      <div class="media item well"><div class="avatar pull-left media-object"><img src="/images/avatar.png"></div><div class="content"><span class="name">SBU DoIT</span>   <span class="username">SBUDoIT</span>   <span class="time pull-right">2 hours ago</span><div class="body">Attention C and Fortran programmers ... <a class="twtr-hyperlink" target="_blank" href="https://t.co/vTmYQayiCh">https://t.co/vTmYQayiCh</a> <a target="_blank" class="twtr-hashtag" href="http://twitter.com/search?q=%23sbudoit">#sbudoit</a><br> </div></div></div><div class="media item well"><div class="avatar pull-left media-object"><img src="/images/avatar.png"></div><div class="content"><span class="name">SBU DoIT</span>   <span class="username">SBUDoIT</span>   <span class="time pull-right">5 hours ago</span><div class="body">Congrats to <a target="_blank" class="twtr-hashtag" href="http://twitter.com/search?q=%23sbudoit">#sbudoit</a>'s Michaela Christman for being named one of 7 Student Employees of the Year! Yay Michaela!!! <a class="twtr-hyperlink" target="_blank" href="https://t.co/xSbU4K3eSJ">https://t.co/xSbU4K3eSJ</a><br> <img src="http://pbs.twimg.com/media/Cf78DX3WcAA5iKh.jpg"></div></div></div><div class="media item well"><div class="avatar pull-left media-object"><img src="/images/avatar.png"></div><div class="content"><span class="name">SBU DoIT</span>   <span class="username">SBUDoIT</span>   <span class="time pull-right">5 hours ago</span><div class="body">Congrats to <a target="_blank" class="twtr-hashtag" href="http://twitter.com/search?q=%23sbudoit">#sbudoit</a>'s Jarrod McFarlane for being named the first-ever Student Employer of the Year at SBU! <a class="twtr-hyperlink" target="_blank" href="https://t.co/vsJB3QaY9j">https://t.co/vsJB3QaY9j</a><br> <img src="http://pbs.twimg.com/media/Cf76aQbWsAEBFR6.jpg"></div></div></div><div class="media item well"><div class="avatar pull-left media-object"><img src="/images/avatar.png"></div><div class="content"><span class="name">SBU DoIT</span>   <span class="username">SBUDoIT</span>   <span class="time pull-right">5 days ago</span><div class="body">Congrats to our 2016 DoIT Scholarship winners - <a class="twtr-hyperlink" target="_blank" href="https://t.co/FjBYUQKahY">https://t.co/FjBYUQKahY</a> - <a target="_blank" class="twtr-hashtag" href="http://twitter.com/search?q=%23sbudoit">#sbudoit</a> <a class="twtr-hyperlink" target="_blank" href="https://t.co/UoK7WNiTwy">https://t.co/UoK7WNiTwy</a><br> <img src="http://pbs.twimg.com/media/CfjMfAyWIAMp3L8.jpg"></div></div></div><div class="media item well"><div class="avatar pull-left media-object"><img src="/images/avatar.png"></div><div class="content"><span class="name">SBU DoIT</span>   <span class="username">SBUDoIT</span>   <span class="time pull-right">5 days ago</span><div class="body"><a target="_blank" class="twtr-atreply" href="http://twitter.com/intent/user?screen_name=hudsoncheeyote">@hudsoncheeyote</a> Check out times and locations of our labs - <a class="twtr-hyperlink" target="_blank" href="https://t.co/RgKtQ7KESH">https://t.co/RgKtQ7KESH</a> <a target="_blank" class="twtr-hashtag" href="http://twitter.com/search?q=%23sbudoit">#sbudoit</a><br> </div></div></div><div class="media item well"><div class="avatar pull-left media-object"><img src="/images/avatar.png"></div><div class="content"><span class="name">Rich</span>   <span class="username">rXaviar</span>   <span class="time pull-right">5 days ago</span><div class="body">.<a target="_blank" class="twtr-atreply" href="http://twitter.com/intent/user?screen_name=SBUDoIT">@SBUDoIT</a> another awesome <a target="_blank" class="twtr-hashtag" href="http://twitter.com/search?q=%23MiniByte">#MiniByte</a> hosted by <a target="_blank" class="twtr-atreply" href="http://twitter.com/intent/user?screen_name=NicholeGladky">@NicholeGladky</a> on Mobile Devices and <a target="_blank" class="twtr-hashtag" href="http://twitter.com/search?q=%23cybersecurity">#cybersecurity</a> <a target="_blank" class="twtr-hashtag" href="http://twitter.com/search?q=%23sbudoit">#sbudoit</a> <a class="twtr-hyperlink" target="_blank" href="https://t.co/M0j9EqKgDl">https://t.co/M0j9EqKgDl</a><br> <img src="http://pbs.twimg.com/media/CfigUWMWsAArtWA.jpg"></div></div></div><div class="media item well"><div class="avatar pull-left media-object"><img src="/images/avatar.png"></div><div class="content"><span class="name">Rich</span>   <span class="username">rXaviar</span>   <span class="time pull-right">5 days ago</span><div class="body">Just finishing up a <a target="_blank" class="twtr-hashtag" href="http://twitter.com/search?q=%23MiniByte">#MiniByte</a> hosted by <a target="_blank" class="twtr-hashtag" href="http://twitter.com/search?q=%23sbudoit">#sbudoit</a> and <a target="_blank" class="twtr-atreply" href="http://twitter.com/intent/user?screen_name=NicholeGladky">@NicholeGladky</a> on mobile <a target="_blank" class="twtr-hashtag" href="http://twitter.com/search?q=%23infosecurity">#infosecurity</a>. <a class="twtr-hyperlink" target="_blank" href="https://t.co/9SPnoVkTq8">https://t.co/9SPnoVkTq8</a><br> <img src="http://pbs.twimg.com/media/CfifQK0UAAEk8ZG.jpg"></div></div></div><div class="media item well"><div class="avatar pull-left media-object"><img src="/images/avatar.png"></div><div class="content"><span class="name">SBU DoIT</span>   <span class="username">SBUDoIT</span>   <span class="time pull-right">7 days ago</span><div class="body">Another brief power outage scheduled in the Computing Center for Thurs, April 7, at 7:15 am <a class="twtr-hyperlink" target="_blank" href="https://t.co/EOvTqNDhPW">https://t.co/EOvTqNDhPW</a> <a target="_blank" class="twtr-hashtag" href="http://twitter.com/search?q=%23sbudoit">#sbudoit</a><br> </div></div></div><div class="media item well"><div class="avatar pull-left media-object"><img src="/images/avatar.png"></div><div class="content"><span class="name">SBU DoIT</span>   <span class="username">SBUDoIT</span>   <span class="time pull-right">8 days ago</span><div class="body">Brief power outage in the Computing Center on April 6, beginning at 7:15 a.m. and lasting ~30 minutes - <a class="twtr-hyperlink" target="_blank" href="https://t.co/EOvTqNDhPW">https://t.co/EOvTqNDhPW</a> - <a target="_blank" class="twtr-hashtag" href="http://twitter.com/search?q=%23sbudoit">#sbudoit</a><br> </div></div></div><div class="media item well"><div class="avatar pull-left media-object"><img src="/images/avatar.png"></div><div class="content"><span class="name">SBU DoIT</span>   <span class="username">SBUDoIT</span>   <span class="time pull-right">9 days ago</span><div class="body">Handing out <a target="_blank" class="twtr-hashtag" href="http://twitter.com/search?q=%23sbudoit">#sbudoit</a> freebies at the Commuter Student Ice Cream Social now at Wolfie's Hut until 4pm! <a class="twtr-hyperlink" target="_blank" href="https://t.co/6lY7VrcVyf">https://t.co/6lY7VrcVyf</a><br> <img src="http://pbs.twimg.com/media/CfN-d5cWwAAFNaw.jpg"></div></div></div>
+
+    <div class="media item well">
+      <div class="avatar pull-left media-object">
+        <img src="images/avatar.png" />
+      </div>
+
+      <div class="content">
+        <span class="name">Tweet Fontana</span>   <span class="username">@tweetfontana</span>   <time class="time pull-right" data-time="Wed Apr 13 2016 15:17:20 GMT-0400 (Eastern Daylight Time)">44m</time>
+        <div class="body">
+          <q>There are several transition effects and themes to choose from. Click the cog icon <i class="icon-cog"></i> in the top bar and customise the way Twitter Fontana visualizes Tweets.</q>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="media item well">
+      <div class="avatar pull-left media-object">
+        <img src="images/avatar.png" />
+      </div>
+
+      <div class="content">
+        <span class="name">Tweet Fontana</span>   <span class="username">@tweetfontana</span>   <time class="time pull-right" data-time="Wed Apr 13 2016 15:17:20 GMT-0400 (Eastern Daylight Time)">44m</time>
+        <div class="body">
+          asdfasdfaslfdkja;lfsdkjl;asdfj;laskdfjl;askjfd;laskjf;lksajdf;lksajdf;lkasjfdl;kj
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="/js/tweet.fetcher.js"></script>
+
+<script src="/js/rotator.js"></script>
+
+</body>
+</html>
