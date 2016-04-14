@@ -51,6 +51,7 @@ h1.site-name
 .content
 {
   display: inline-block;
+  margin-top: 15px;
 
   vertical-align: top;
 }
@@ -116,5 +117,12 @@ h1.site-name
 
 .avatar
 {
-      margin-top: 9px;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+.avatar img
+{
+    width: 80px;
+    height: 80px;
 }

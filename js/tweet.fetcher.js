@@ -1,5 +1,19 @@
 $(function() {
   console.log("Tweet fetcher operational");
+  $template = '<div class="media item well">';
+  $template += '<div class="item-header">';
+  $template += '<div class="avatar pull-left media-object">{AVATAR}</div>';
+  $template += '<span class="name">{USER_NAME}</span>   <span class="username">@{USER_HANDLE}</span>   <span class="time pull-right">{AGO}</span>';
+  $template +=  '</div>';
+  $template +=  '<div class="content">';
+  $template +=  '<div class="body">';
+  $template +=  '{IMG}';
+  $template +=  '{TEXT}';
+  $template += '</div>';
+  $template += '</div>';
+  $template += '</div>';
+
+
 	JQTWEET = {
 
 	    // Set twitter hash/user, number of tweets & id/class to append tweets
@@ -11,7 +25,7 @@ $(function() {
 	    numTweets: 21, //number of tweets
 	    appendTo: '.wall',
 	    useGridalicious: false,
-	    template: '<div class="media item well"><div class="avatar pull-left media-object">{AVATAR}</div><div class="content"><span class="name">{USER_NAME}</span>   <span class="username">@{USER_HANDLE}</span>   <span class="time pull-right">{AGO}</span><div class="body">{IMG}{TEXT}</div></div></div>',
+	    template: $template,
 
 	    // core function of jqtweet
 	    // https://dev.twitter.com/docs/using-search
@@ -93,7 +107,7 @@ $(function() {
                     $('.wall').cycle({
                        speed: 600,
                        slides: '> div',
-                       timeout: 4000,
+                       timeout: 7000,
                        startingSlide: 1,
                        slideCss:         {  },
                        manualSpeed: 100
