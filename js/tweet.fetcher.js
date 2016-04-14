@@ -1,6 +1,6 @@
 $(function() {
   console.log("Tweet fetcher operational");
-  $template = '<div class="media item well">';
+  $template = '<div class="media item well tweet-card">';
   $template += '<div class="item-header">';
   $template += '<div class="avatar pull-left media-object">{AVATAR}</div>';
   $template += '<span class="name">{USER_NAME}</span>   <span class="username">@{USER_HANDLE}</span>   <span class="time pull-right">{AGO}</span>';
@@ -20,9 +20,9 @@ $(function() {
 	    // You need to clear tweet-date.txt before toggle between hash and user
 	    // for multiple hashtags, you can separate the hashtag with OR, eg:
 	    // hash: '%23jquery OR %23css'
-	    search: '#sbudoit', //leave this blank if you want to show user's tweet
+	    search: '#trump OR #sbudoit OR #sbutlt', //leave this blank if you want to show user's tweet
 	    user: '', //username
-	    numTweets: 21, //number of tweets
+	    numTweets: 100, //number of tweets
 	    appendTo: '.wall',
 	    useGridalicious: false,
 	    template: $template,
@@ -100,18 +100,13 @@ $(function() {
 
 
                               //    console.log($tweetCard);
-            	                    $(JQTWEET.appendTo).append( $tweetCard );
+            	                    //$(JQTWEET.appendTo).append( $tweetCard );
+
+                                  $('.wall').cycle('add', $tweetCard);
                       }
 	                  }
 
-                    $('.wall').cycle({
-                       speed: 600,
-                       slides: '> div',
-                       timeout: 7000,
-                       startingSlide: 1,
-                       slideCss:         {  },
-                       manualSpeed: 100
-                     });
+
                    console.log("cycling");
 
                   } catch (e) {

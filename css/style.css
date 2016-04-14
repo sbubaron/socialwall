@@ -1,4 +1,4 @@
-html, body, #container{
+html, body{
   height: 100%;
   width: 100%;
 
@@ -6,33 +6,59 @@ html, body, #container{
   padding: 0;
 }
 
-*
-{
-  box-sizing: border-box;
-}
-
 body
 {
+
   background-image: url('/images/spring.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 
-
 }
 
-#container{
 
-  background-color:rgba(0, 0, 0, 0.7);
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 75px;
+    background-color: #fff;
+}
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #000;
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+}
+#content {
+    position: fixed;
+    top: 75px;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    background-color: #F63;
+    overflow: auto;
 
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+    display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color:rgba(0, 0, 0, 0.7);
+   margin: 0;
+   padding: 0;
+
 }
 
 h1.site-name
 {
   margin-top: 23px;
 }
+
+
 
 .item
 {
@@ -61,25 +87,16 @@ h1.site-name
 }
 
 
-.header{
-  width: 100%;
-  position: absolute;
-    background-color:rgba(255, 255, 255, 0.8);
-  left:0;
-  top:0;
-  padding: 10px;
-}
 
 .hashtag {
   margin-right: 100px;
 }
 
-#container
-{
-  display: flex;
- align-items: center;
- justify-content: center;
-}
+
+
+
+
+
 
 .wall
 {
@@ -96,6 +113,9 @@ h1.site-name
 
 }
 
+.item-header{
+  font-size: 1.3em;
+}
 .item.cycle-slide-active
 {
   display: block;

@@ -20,13 +20,13 @@ $cb->setToken($ACCESS_TOKEN, $ACCESS_TOKEN_SECRET);
 if(isset($_POST['q']))
   $q = $_POST['q'];
 else {
-  $q = '#sbudoit';
+  $q = '#sbudoit OR #sbutlt OR #trump';
 }
 
 if(isset($_POST['count']))
   $count = $_POST['count'];
 else {
-  $count = 21;
+  $count = 100;
 }
 
 if(isset($_POST['api']))
@@ -39,7 +39,8 @@ else
 $params = array(
 	'screen_name' => $q,
 	'q' => $q,
-	'count' => $count
+  //'since_id' => 692126131261153281,
+  'count' => 90
 );
 
 //Make the REST call

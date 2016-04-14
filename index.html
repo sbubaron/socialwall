@@ -6,7 +6,7 @@
 <script src="/js/cycle.js"></script>
 
 <link type="text/css" rel="stylesheet" href="https://fast.fonts.net/cssapi/8b09d344-baa0-42a8-bbac-175ff46c86d5.css" media="all">
-<link type="text/css" rel="stylesheet" href="https://unity.it.stonybrook.edu/.dist/css/style.css" media="all">
+<link type="text/css" rel="stylesheet" href="/unity/latest/css/style.css" media="all">
 <link type="text/css" rel="stylesheet" href="/css/style.css" media="all">
 
 <style>
@@ -19,8 +19,7 @@
 
 <body>
 
-
-    <div class="logo-container">
+    <div id="header" class="logo-container">
                   <div class="container">
 
                       <div class="logo-wrapper clearfix">
@@ -33,20 +32,80 @@
                   </div>
               </div>
 
-<div id="container">
-  
+<div id="content">
+
   <div class="wall">
 
+    <div class="media item well announcement-card">
+      <div class="content">
+        <div class="body">
+          Join the Conversation: #sbutlt
+        </div>
+      </div>
+    </div>
 
 
   </div>
 </div>
 
+<div id="footer">
+  <h2><i class="sbuicon-twitter4"></i> Join the Conversation: #sbutlt</h2>
+</div>
+
 <script src="/js/tweet.fetcher.js"></script>
+<script src="/js/announcement.fetcher.js"></script>
+
 <script type="text/javascript">
 $(function () {
+
+  $('.wall').cycle({
+     speed: 600,
+     slides: '> div',
+     timeout: 7000,
+     random: true,
+     startingSlide: 1,
+
+     slideCss:         {  },
+     manualSpeed: 100
+   });
+
     // start jqtweet!
     JQTWEET.loadTweets();
+    JQANNOUNCE.loadAnnouncements();
+
+
+    (function(){
+    // do some stuff
+    //setInterval(shuffle, 5000);
+    setInterval(shuffle, 14000);
+    setInterval(fillTweets, 30000);
+  //  setInterval(fillAnnouncements, 30000);
+    })();
+
+
+    function shuffle(){
+        console.log("every day i'm shuffling");
+        var $container = $(".wall");
+        var o = $container.children().get();
+        for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+
+        //var $container = $(".wall");
+        $container.html(o);
+    };
+
+    function fillTweets(){
+      console.log("refilling tweets");
+      var $container = $(".wall .tweet-card").addClass("to-purge");
+
+      JQTWEET.loadTweets();
+
+      //$(".wall .to-purge:not(.cycle-slide-active)").remove();
+      $(".wall .to-purge").each(function() {
+        if(this.hasClass())
+      });
+      shuffle();
+
+    }
 });
 </script>
 
