@@ -1,6 +1,6 @@
 $(function() {
   console.log("Announcement fetcher operational");
-  $template = '<div class="media item well announcement-card">';
+  $template = '<div class="media well announcement-card">';
   //$template += '<div class="item-header">';
   //$template += '<div class="avatar pull-left media-object">{AVATAR}</div>';
   //$template += '<span class="name">{USER_NAME}</span>   <span class="username">@{USER_HANDLE}</span>   <span class="time pull-right">{AGO}</span>';
@@ -26,6 +26,7 @@ $(function() {
 	    appendTo: '.wall',
 	    useGridalicious: false,
 	    template: $template,
+      sinceid: -1,
 
 	    // core function of jqtweet
 	    // https://dev.twitter.com/docs/using-search
@@ -40,19 +41,21 @@ $(function() {
 	            dataType: 'json',
 	            data: request,
 	            success: function(data, textStatus, xhr) {
-                console.log(data);
+              //  console.log(data);
+              console.log(data);
+              console.log(JQANNOUNCE.sinceid);
 
 		            if (data.length > 0) {
 
-                  
+
 
 	                var text, name, img;
 
 	                try {
 	                  // append tweets into page
-                    //console.log(data);
-	                  for (var i = 0; i < data.length; i++) {
-                      console.log(data[i]);
+
+	                  for (var i = JQANNOUNCE.sinceid; i < data.length; i++) {
+                    //  console.log(data[i]);
                     //  console.log(data[i].text);
                     //  console.log(JQTWEET.ify.clean(data[i].text));
                     //  console.log(data[i].user.screen_name);
@@ -61,18 +64,17 @@ $(function() {
 
 
 
-                            $announceCard = JQANNOUNCE.template.replace('{TEXT}', data[i].Text );
-
-
-
-                        //    console.log($tweetCard);
-                            //$(JQTWEET.appendTo).append( $tweetCard );
-
-
+                          if(i > 0 && data[i].id > JQANNOUNCE.sinceid)
+                          {
+                            $announceCard = JQANNOUNCE.template.replace('{TEXT}', data[i].Title );
                             $('.wall').cycle('add', $announceCard);
+
+                            JQANNOUNCE.sinceid = data[i].id;
+                            console.log(JQANNOUNCE.sinceid);
+                          }
                       }
 
-                      console.log("cycling");
+
                   }
                   catch (e) {
 	                  //item is less than item count
@@ -80,7 +82,7 @@ $(function() {
                     console.log(e);
                   }
 
-	               } else alert('no data returned');
+                } else console.log('no data returned');
 
 
 	            }

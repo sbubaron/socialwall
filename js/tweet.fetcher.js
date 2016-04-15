@@ -1,9 +1,9 @@
 $(function() {
   console.log("Tweet fetcher operational");
-  $template = '<div class="media item well tweet-card">';
+  $template = '<div class="media well tweet-card {ID}">';
   $template += '<div class="item-header">';
   $template += '<div class="avatar pull-left media-object">{AVATAR}</div>';
-  $template += '<span class="name">{USER_NAME}</span>   <span class="username">@{USER_HANDLE}</span>   <span class="time pull-right">{AGO}</span>';
+  $template += '<span class="name">{USER_NAME}</span> <span class="username">@{USER_HANDLE}</span>   <span class="time pull-right">{AGO}</span>';
   $template +=  '</div>';
   $template +=  '<div class="content">';
   $template +=  '<div class="body">';
@@ -20,13 +20,16 @@ $(function() {
 	    // You need to clear tweet-date.txt before toggle between hash and user
 	    // for multiple hashtags, you can separate the hashtag with OR, eg:
 	    // hash: '%23jquery OR %23css'
-	    search: '#trump OR #sbudoit OR #sbutlt', //leave this blank if you want to show user's tweet
+	    search: '#sbudoit OR #sbutlt', //leave this blank if you want to show user's tweet
 	    user: '', //username
 	    numTweets: 100, //number of tweets
 	    appendTo: '.wall',
 	    useGridalicious: false,
 	    template: $template,
-
+      sinceid: 720825277157236699,
+      //720825277157236699
+      //720825277157236736
+      //720825277157236700
 	    // core function of jqtweet
 	    // https://dev.twitter.com/docs/using-search
 	    loadTweets: function() {
@@ -34,29 +37,23 @@ $(function() {
 	        var request;
 
 	        // different JSON request {hash|user}
-	        if (JQTWEET.search) {
+
             request = {
                 q: JQTWEET.search,
                 count: JQTWEET.numTweets,
+                sinceid: JQTWEET.sinceid,
                 api: 'search_tweets'
             }
-	        } else {
-            request = {
-                q: JQTWEET.user,
-                count: JQTWEET.numTweets,
-                api: 'statuses_userTimeline'
-            }
-	        }
 
   //        console.log(request);
-
+          console.log(JQTWEET.sinceid);
 	        $.ajax({
 	            url: '/oauth/grabtweets.php',
 	            type: 'POST',
 	            dataType: 'json',
 	            data: request,
 	            success: function(data, textStatus, xhr) {
-
+                console.log(data);
 		            if (data.httpstatus == 200) {
 		            	if (JQTWEET.search) data = data.statuses;
 
@@ -80,34 +77,46 @@ $(function() {
 
                       }
                       else {
+                          console.log(JQTWEET.sinceid + " - " + data[i].id);
 
 
+        	                    try {
+        	                      if (data[i].entities['media']) {
+        	                        img = '<img class="pull-right" src="' + data[i].entities['media'][0].media_url + '" />';
+        	                      }
+        	                    } catch (e) {
+        	                      //no media
+                                console.log("no media");
+        	                    }
+                              $tweetCard = JQTWEET.template.replace('{TEXT}', JQTWEET.ify.clean(data[i].text) )
+        	                        .replace('{USER_HANDLE}', data[i].user.screen_name)
+        	                        .replace('{IMG}', img)
+                                  .replace('{AVATAR}', avatar)
+                                  .replace('{USER_NAME}', data[i].user.name)
+                                  .replace('{ID}', data[i].id)
+        	                        .replace('{AGO}', JQTWEET.timeAgo(data[i].created_at) )
 
-            	                    try {
-            	                      if (data[i].entities['media']) {
-            	                        img = '<img class="pull-right" src="' + data[i].entities['media'][0].media_url + '" />';
-            	                      }
-            	                    } catch (e) {
-            	                      //no media
-                                    console.log("no media");
-            	                    }
-                                  $tweetCard = JQTWEET.template.replace('{TEXT}', JQTWEET.ify.clean(data[i].text) )
-            	                        .replace('{USER_HANDLE}', data[i].user.screen_name)
-            	                        .replace('{IMG}', img)
-                                      .replace('{AVATAR}', avatar)
-                                      .replace('{USER_NAME}', data[i].user.name)
-            	                        .replace('{AGO}', JQTWEET.timeAgo(data[i].created_at) )
 
-
-                              //    console.log($tweetCard);
-            	                    //$(JQTWEET.appendTo).append( $tweetCard );
-
+                          //    console.log($tweetCard);
+        	                    //$(JQTWEET.appendTo).append( $tweetCard );
+                              if(!$(".wall ." + data[i].id)[0])
+                              {
                                   $('.wall').cycle('add', $tweetCard);
+                                  console.log("adding " + data[i].id);
+                              }
+
+
+                          if(JQTWEET.sinceid < data[i].id)
+                          {
+                            JQTWEET.sinceid = data[i].id;
+                            console.log(JQTWEET.sinceid);
+                          }
+
                       }
 	                  }
 
 
-                   console.log("cycling");
+
 
                   } catch (e) {
 	                  //item is less than item count
@@ -115,16 +124,9 @@ $(function() {
                     console.log(e);
                   }
 
-		                if (JQTWEET.useGridalicious) {
-			                //run grid-a-licious
-											$(JQTWEET.appendTo).gridalicious({
-												gutter: 13,
-												width: 200,
-												animate: true
-											});
-										}
 
-	               } else alert('no data returned');
+
+	               } else console.log('no data returned');
 
 
 	            }

@@ -36,14 +36,6 @@
 
   <div class="wall">
 
-    <div class="media item well announcement-card">
-      <div class="content">
-        <div class="body">
-          Join the Conversation: #sbutlt
-        </div>
-      </div>
-    </div>
-
 
   </div>
 </div>
@@ -61,9 +53,10 @@ $(function () {
   $('.wall').cycle({
      speed: 600,
      slides: '> div',
-     timeout: 7000,
-     random: true,
-     startingSlide: 1,
+     timeout: 9000,
+     random: false,
+     startingSlide: 0,
+     autoHeight: false,
 
      slideCss:         {  },
      manualSpeed: 100
@@ -77,33 +70,68 @@ $(function () {
     (function(){
     // do some stuff
     //setInterval(shuffle, 5000);
-    setInterval(shuffle, 14000);
-    setInterval(fillTweets, 30000);
-  //  setInterval(fillAnnouncements, 30000);
+    setInterval(shuffle, 300000);
+    setInterval(fillTweets, 120000);
+    setInterval(fillAnnouncements, 60000);
+    setTimeout(shuffle, 6000);
     })();
 
 
     function shuffle(){
         console.log("every day i'm shuffling");
+
+        $('.wall').cycle('pause');
+
         var $container = $(".wall");
         var o = $container.children().get();
         for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 
         //var $container = $(".wall");
+
         $container.html(o);
+
+
+
+        $(".wall .media").each(function(index) {
+          $(this).css( "zIndex", 999-index );
+        });
+
+
+
+
+
+        $('.wall').cycle('resume');
+      //  $('.wall').cycle('reinit');
     };
 
     function fillTweets(){
       console.log("refilling tweets");
-      var $container = $(".wall .tweet-card").addClass("to-purge");
+      //var $container = $(".wall .tweet-card").addClass("to-purge");
 
       JQTWEET.loadTweets();
 
-      //$(".wall .to-purge:not(.cycle-slide-active)").remove();
-      $(".wall .to-purge").each(function() {
-        if(this.hasClass())
-      });
-      shuffle();
+    // $('.wall').cycle('pause');
+
+    //  $(".wall .to-purge:not(.cycle-slide-active)").remove();
+
+  //    $('.wall').cycle('resume');
+
+      //setTimeout(shuffle, 6000);
+
+
+
+    }
+
+    function fillAnnouncements(){
+      console.log("refilling announcements");
+    //  var $container = $(".wall .announcement-card").addClass("to-purge");
+
+      JQANNOUNCE.loadAnnouncements();
+
+
+
+      //setTimeout(shuffle, 6000);
+
 
     }
 });

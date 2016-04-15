@@ -20,7 +20,7 @@ $cb->setToken($ACCESS_TOKEN, $ACCESS_TOKEN_SECRET);
 if(isset($_POST['q']))
   $q = $_POST['q'];
 else {
-  $q = '#sbudoit OR #sbutlt OR #trump';
+  $q = '#sbudoit OR #sbutlt';
 }
 
 if(isset($_POST['count']))
@@ -34,12 +34,17 @@ if(isset($_POST['api']))
 else
   $api = "search_tweets";
 
+if(isset($_POST['sinceid']))
+  $sinceid = $_POST['sinceid'];
+else {
+  $sinceid = 720825277157236699;
+}
 //https://dev.twitter.com/docs/api/1.1/get/statuses/user_timeline
 //https://dev.twitter.com/docs/api/1.1/get/search/tweets
 $params = array(
 	'screen_name' => $q,
 	'q' => $q,
-  //'since_id' => 692126131261153281,
+  'since_id' => $sinceid,
   'count' => 90
 );
 
