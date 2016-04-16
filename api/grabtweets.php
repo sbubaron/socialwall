@@ -35,7 +35,7 @@ else
 if(isset($_POST['sinceid']))
   $sinceid = $_POST['sinceid'];
 else {
-  $sinceid = 720825277157236699;
+  $sinceid = 0;
 }
 //https://dev.twitter.com/docs/api/1.1/get/statuses/user_timeline
 //https://dev.twitter.com/docs/api/1.1/get/search/tweets
@@ -43,7 +43,7 @@ $params = array(
 	'screen_name' => $q,
 	'q' => $q,
   'since_id' => $sinceid,
-  'count' => 90
+  'count' => $count,
 );
 
 //Make the REST call

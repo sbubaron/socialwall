@@ -5,6 +5,7 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
     <script src="theme/js/cycle.js"></script>
+    <script src="theme/js/timeago.js"></script>
 
     <link type="text/css" rel="stylesheet" href="https://fast.fonts.net/cssapi/8b09d344-baa0-42a8-bbac-175ff46c86d5.css" media="all">
     <link type="text/css" rel="stylesheet" href="theme/unity/latest/css/style.css" media="all">
@@ -47,6 +48,11 @@
     <script src="theme/js/announcement.fetcher.js"></script>
 
     <script type="text/javascript">
+
+        jQuery(document).ready(function() {
+            jQuery("time.timeago").timeago();
+        });
+
         $(function() {
 
             $('.wall').cycle({
@@ -63,18 +69,23 @@
 
             // start jqtweet!
             JQTWEET.loadTweets();
-            JQANNOUNCE.loadAnnouncements();
+  //          JQANNOUNCE.loadAnnouncements();
 
 
             (function() {
                 // do some stuff
 
-                setInterval(fillTweets, 60000); //refresh tweets every minute
-                setInterval(fillAnnouncements, 60000); //refresh announcements every minute
-                setTimeout(shuffle, 6000); //shuffle slide show initially after 6 seconds, this allows them to load
+                setInterval(fillTweets, 600000); //refresh tweets every minute
+                //setInterval(fillAnnouncements, 60000); //refresh announcements every minute
+                setTimeout(shuffle, 3000); //shuffle slide show initially after 6 seconds, this allows them to load
+
                 setTimeout(function() {
                     location.reload(1);
                 }, 300000); //reload entire page every 5 minutes
+
+                setTimeout(function() {
+                    jQuery("time.timeago").timeago();
+                }, 3000); //reload entire page every 5 minutes
             })();
 
 

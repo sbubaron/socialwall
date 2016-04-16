@@ -3,7 +3,7 @@ $(function() {
     $template = '<div class="media well tweet-card {ID}">';
     $template += '<div class="item-header">';
     $template += '<div class="avatar pull-left media-object">{AVATAR}</div>';
-    $template += '<span class="name">{USER_NAME}</span> <span class="username">@{USER_HANDLE}</span>   <span class="time pull-right">{AGO}</span>';
+    $template += '<span class="name">{USER_NAME}</span> <span class="username">@{USER_HANDLE}</span> <time class="time pull-right timeago" datetime="{DATEISO}"></time>';
     $template += '</div>';
     $template += '<div class="content">';
     $template += '<div class="body">';
@@ -19,8 +19,8 @@ $(function() {
         // Set twitter hash/user, number of tweets & id/class to append tweets
         // for multiple hashtags, you can separate the hashtag with OR, eg:
         // hash: '%23jquery OR %23css'
-        search: '#sbudoit OR #sbutlt', //leave this blank if you want to show user's tweet
-        numTweets: 100, //number of tweets to load
+        search: '#trump OR #sbutlt', //leave this blank if you want to show user's tweet
+        numTweets: 5, //number of tweets to load
         appendTo: '.wall',
         template: $template,
         sinceid: 720825277157236699, //id of oldest tweet to load
@@ -84,6 +84,8 @@ $(function() {
                                         .replace('{USER_NAME}', data[i].user.name)
                                         .replace('{ID}', data[i].id)
                                         .replace('{AGO}', JQTWEET.timeAgo(data[i].created_at))
+                                        .replace('{DATE}', JQTWEET.dateString(data[i].created_at))
+                                        .replace('{DATEISO}', JQTWEET.dateISO(data[i].created_at));
 
 
                                     //    console.log($tweetCard);
@@ -122,7 +124,28 @@ $(function() {
 
         },
 
+        dateString: function(dateString) {
+          var date = new Date(dateString);
 
+          if ($.browser.msie) {
+              // IE can't parse these crazy Ruby dates
+              date = Date.parse(dateString.replace(/( \+)/, ' UTC$1'));
+          }
+
+
+          return date;
+        },
+
+        dateISO: function(dateString) {
+          var date = new Date(dateString);
+
+          if ($.browser.msie) {
+              // IE can't parse these crazy Ruby dates
+              date = Date.parse(dateString.replace(/( \+)/, ' UTC$1'));
+          }
+
+          return date.toISOString();
+        },
         /**
          * relative time calculator FROM TWITTER
          * @param {string} twitter date string returned from Twitter API
